@@ -9,6 +9,7 @@ Please refer to Releases for downlods (https://github.com/MoshDev/ILog/releases/
 
 Samples and documentation
 =========================
-  new ILog().d(); // as simple as that
+
+    new ILog().d(); // as simple as that
 
 Refer to http://www.moshx.com  for more details
