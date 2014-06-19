@@ -56,17 +56,6 @@ public class ILog {
 		return this;
 	}
 
-	public ILog setLevels(int levels) {
-		mSettings.setLevels(levels);
-		return this;
-
-	}
-
-	public ILog setLevels(Level... levels) {
-		mSettings.setLevels(levels);
-		return this;
-	}
-
 	public ILog setTag(String tag) {
 		mTag = tag;
 		return this;
