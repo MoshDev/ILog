@@ -2,3 +2,11 @@ ILog
 ====
 
 Simple Logging Tool for Android and Java Platforms
+
+Download
+========
+Please refer to Releases for downlods (https://github.com/MoshDev/ILog/releases/tag/Version_0.1)
+
+Samples and documentation
+=========================
+Refer to http://www.moshx.com  for more details
