@@ -15,13 +15,12 @@ public class LoggingTest {
 		log.i("am here"); // will print passed message
 		log.e("erro :O");
 		log.v();
+
 		log.setFileLogger(new HtmlFileLogger()).getFileLogger()
 				.createLogFile(getLoggingFile());
 		log.d();
 		log.d(1000);
 		log.getFileLogger().onEnd();
-		
-		
 
 		new AnotherTestClass().test();
 
