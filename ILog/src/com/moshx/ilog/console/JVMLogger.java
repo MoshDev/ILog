@@ -1,4 +1,4 @@
-package com.moshx.ilog.loggers;
+package com.moshx.ilog.console;
 
 import java.io.PrintStream;
 

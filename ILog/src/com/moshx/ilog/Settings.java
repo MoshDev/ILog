@@ -1,9 +1,20 @@
 package com.moshx.ilog;
 
-import com.moshx.ilog.ILog.Level;
 
 public class Settings {
 
+	public enum Level {
+
+		DEBUG(0x01), INFO(0x02), WARN(0x04), ERROR(0x08), VERBOSE(0x16);
+
+		public final int value;
+
+		Level(int value) {
+			this.value = value;
+
+		}
+	}
+	
 	boolean enabled = true;
 	/**
 	 * Levels
@@ -14,6 +25,7 @@ public class Settings {
 	boolean isErrorEnabled = true;
 	boolean isVerboseEnabled = true;
 	boolean isFileLoggingEnabled = false;
+	private boolean isWrapText = true;
 
 	public void setLevels(int levels) {
 
@@ -34,11 +46,11 @@ public class Settings {
 		}
 	}
 
-	public void setEnabled(boolean b) {
+	public void enableLogging(boolean b) {
 		enabled = b;
 	}
 
-	public boolean isEnabled() {
+	public boolean isLoggingEnabled() {
 		return enabled;
 	}
 
@@ -62,5 +74,13 @@ public class Settings {
 
 	public String formatOut(Object... in) {
 		return String.format(outFormat, in);
+	}
+
+	public boolean isWrapText() {
+		return isWrapText;
+	}
+
+	public void setWrapText(boolean isWrapText) {
+		this.isWrapText = isWrapText;
 	}
 }

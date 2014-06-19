@@ -3,7 +3,6 @@ package com.moshx.jvmsample;
 import java.io.File;
 
 import com.moshx.ilog.ILog;
-import com.moshx.ilog.filelogger.TextFileLogger;
 
 public class Main {
 
@@ -13,25 +12,9 @@ public class Main {
 		// htmlFileLogger.createLogFile(new File(
 		// "/Users/appleapple/Documents/test/logging"));
 
-		TextFileLogger logger = new TextFileLogger();
-		logger.createLogFile(new File(
-				"/Users/appleapple/Documents/test/logging"));
+		ILog.o.getFileLogger().createLogFile(new File("/Users/appleapple/Documents/test/logging/mm"));
 
-		ILog iLog = new ILog();
-		iLog.setFileLogger(logger);
-
-		iLog.getSettings().setFileLogging(true);
-
-		iLog.i();
-		iLog.v();
-		iLog.w();
-		StringBuilder b = new StringBuilder(5000);
-		while (b.length() < 5000) {
-			b.append("helllllllloooooooo helllllllloooooooo helllllllloooooooo helllllllloooooooo helllllllloooooooo\n");
-		}
-
-		iLog.e(b);
-
+		ILog.o.get
 	}
 
 }

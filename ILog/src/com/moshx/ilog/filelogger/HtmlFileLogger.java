@@ -5,7 +5,7 @@ import java.io.StringWriter;
 import java.net.UnknownHostException;
 import java.util.Date;
 
-import com.moshx.ilog.ILog.Level;
+import com.moshx.ilog.Settings.Level;
 
 public class HtmlFileLogger extends FileLogger {
 

@@ -3,7 +3,7 @@ package com.moshx.ilog.filelogger;
 import java.util.Date;
 import java.util.Locale;
 
-import com.moshx.ilog.ILog.Level;
+import com.moshx.ilog.Settings.Level;
 
 public class TextFileLogger extends FileLogger {
 

@@ -8,12 +8,13 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-import com.moshx.ilog.ILog.Level;
+import com.moshx.ilog.Settings.Level;
 
 public abstract class FileLogger {
 
 	protected PrintStream printStream;
 	protected boolean isStarted;
+
 	private static final SimpleDateFormat FILE_DATE_FORMATTER = new SimpleDateFormat(
 			"yyyy_MM_dd__HH_mm_ss_SSS", Locale.US);
 
@@ -34,6 +35,7 @@ public abstract class FileLogger {
 	public FileLogger createLogFile(String path) {
 		try {
 			File f = new File(path);
+			f.getParentFile().mkdirs();
 			f.createNewFile();
 			setLogFile(f);
 		} catch (Exception e) {
@@ -46,6 +48,7 @@ public abstract class FileLogger {
 	public FileLogger createLogFile(String parent, String fileName) {
 		try {
 			File f = new File(parent, fileName);
+			f.getParentFile().mkdirs();
 			f.createNewFile();
 			setLogFile(f);
 		} catch (Exception e) {
@@ -63,6 +66,7 @@ public abstract class FileLogger {
 		try {
 			File f = new File(parentFile, generateLogFileName()
 					+ getFileExtension());
+			f.getParentFile().mkdirs();
 			f.createNewFile();
 			setLogFile(f);
 		} catch (Exception e) {
