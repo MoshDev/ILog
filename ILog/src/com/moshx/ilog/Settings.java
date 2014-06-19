@@ -13,6 +13,7 @@ public class Settings {
 	boolean isWarnEnabled = true;
 	boolean isErrorEnabled = true;
 	boolean isVerboseEnabled = true;
+	boolean isFileLoggingEnabled = false;
 
 	public void setLevels(int levels) {
 
@@ -24,7 +25,7 @@ public class Settings {
 	}
 
 	public void setLevels(Level... levels) {
-		int vals = -1;
+		int vals = 0;
 		if (levels != null) {
 			for (Level l : levels) {
 				vals |= l.value;
@@ -41,11 +42,19 @@ public class Settings {
 		return enabled;
 	}
 
+	public void setFileLogging(boolean b) {
+		isFileLoggingEnabled = b;
+	}
+
+	public boolean isFileLogging() {
+		return isFileLoggingEnabled;
+	}
+
 	/**
 	 * formations
 	 */
 
-	private String outFormat = "-%s\t%s\t%s\t%s";
+	private String outFormat = "-%s   %s   %s";
 
 	public void setOutFormat(String format) {
 		outFormat = format;

@@ -2,17 +2,17 @@ package com.moshx.ilog.loggers;
 
 public abstract class ILogLogger {
 
-	public abstract void d(String tag, String msg, Throwable err);
+	public abstract void d(String tag, Object msg, Throwable err);
 
-	public abstract void e(String tag, String msg, Throwable err);
+	public abstract void e(String tag, Object msg, Throwable err);
 
-	public abstract void i(String tag, String msg, Throwable err);
+	public abstract void i(String tag, Object msg, Throwable err);
 
-	public abstract void v(String tag, String msg, Throwable err);
+	public abstract void v(String tag, Object msg, Throwable err);
 	
-	public abstract void w(String tag, String msg, Throwable err);
+	public abstract void w(String tag, Object msg, Throwable err);
 
-	public static boolean isEmptyText(String s) {
-		return s == null || s.length() == 0;
+	public static boolean isNull(Object s) {
+		return s == null || s.toString().length() == 0;
 	}
 }

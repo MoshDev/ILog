@@ -1,73 +1,70 @@
 package com.moshx.ilog.loggers;
 
-import com.moshx.ilog.Settings;
-
 import android.util.Log;
+
+import com.moshx.ilog.Settings;
 
 class AndroidLogger extends ILogLogger {
 
-	private Settings mSettings;
-
 	public AndroidLogger(Settings sts) {
-		mSettings = sts;
 	}
 
 	@Override
-	public void d(String tag, String msg, Throwable err) {
+	public void d(String tag, Object msg, Throwable err) {
 
-		if (!isEmptyText(msg) && err != null) {
-			Log.d(tag, msg, err);
-		} else if (!isEmptyText(msg) && err == null) {
-			Log.d(tag, msg);
-		} else if (isEmptyText(msg) && err != null) {
+		if (!isNull(msg) && err != null) {
+			Log.d(tag, msg.toString(), err);
+		} else if (!isNull(msg) && err == null) {
+			Log.d(tag, msg.toString());
+		} else if (isNull(msg) && err != null) {
 			Log.d(tag, "", err);
 		}
 	}
 
 	@Override
-	public void e(String tag, String msg, Throwable err) {
+	public void e(String tag, Object msg, Throwable err) {
 
-		if (!isEmptyText(msg) && err != null) {
-			Log.e(tag, msg, err);
-		} else if (!isEmptyText(msg) && err == null) {
-			Log.e(tag, msg);
-		} else if (isEmptyText(msg) && err != null) {
+		if (!isNull(msg) && err != null) {
+			Log.e(tag, msg.toString(), err);
+		} else if (!isNull(msg) && err == null) {
+			Log.e(tag, msg.toString());
+		} else if (isNull(msg) && err != null) {
 			Log.e(tag, "", err);
 		}
 	}
 
 	@Override
-	public void i(String tag, String msg, Throwable err) {
+	public void i(String tag, Object msg, Throwable err) {
 
-		if (!isEmptyText(msg) && err != null) {
-			Log.i(tag, msg, err);
-		} else if (!isEmptyText(msg) && err == null) {
-			Log.i(tag, msg);
-		} else if (isEmptyText(msg) && err != null) {
+		if (!isNull(msg) && err != null) {
+			Log.i(tag, msg.toString(), err);
+		} else if (!isNull(msg) && err == null) {
+			Log.i(tag, msg.toString());
+		} else if (isNull(msg) && err != null) {
 			Log.i(tag, "", err);
 		}
 	}
 
 	@Override
-	public void v(String tag, String msg, Throwable err) {
+	public void v(String tag, Object msg, Throwable err) {
 
-		if (!isEmptyText(msg) && err != null) {
-			Log.v(tag, msg, err);
-		} else if (!isEmptyText(msg) && err == null) {
-			Log.v(tag, msg);
-		} else if (isEmptyText(msg) && err != null) {
+		if (!isNull(msg) && err != null) {
+			Log.v(tag, msg.toString(), err);
+		} else if (!isNull(msg) && err == null) {
+			Log.v(tag, msg.toString());
+		} else if (isNull(msg) && err != null) {
 			Log.v(tag, "", err);
 		}
 	}
 
 	@Override
-	public void w(String tag, String msg, Throwable err) {
+	public void w(String tag, Object msg, Throwable err) {
 
-		if (!isEmptyText(msg) && err != null) {
-			Log.w(tag, msg, err);
-		} else if (!isEmptyText(msg) && err == null) {
-			Log.w(tag, msg);
-		} else if (isEmptyText(msg) && err != null) {
+		if (!isNull(msg) && err != null) {
+			Log.w(tag, msg.toString(), err);
+		} else if (!isNull(msg) && err == null) {
+			Log.w(tag, msg.toString());
+		} else if (isNull(msg) && err != null) {
 			Log.w(tag, "", err);
 		}
 	}
