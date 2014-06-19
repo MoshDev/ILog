@@ -1,5 +1,6 @@
 package com.moshx.ilog;
 
+import com.moshx.ilog.filelogger.FileLogger;
 
 public class Settings {
 
@@ -14,7 +15,7 @@ public class Settings {
 
 		}
 	}
-	
+
 	boolean enabled = true;
 	/**
 	 * Levels
@@ -27,6 +28,13 @@ public class Settings {
 	boolean isFileLoggingEnabled = false;
 	private boolean isWrapText = true;
 
+	/**
+	 * Sets the {@link Level}s that would be logged, only passed levels would be
+	 * logged.
+	 * 
+	 * @param levels
+	 *            to be logged
+	 */
 	public void setLevels(int levels) {
 
 		isDebugEnabled = ((levels & Level.DEBUG.value) == Level.DEBUG.value);
@@ -36,6 +44,13 @@ public class Settings {
 		isVerboseEnabled = ((levels & Level.VERBOSE.value) == Level.VERBOSE.value);
 	}
 
+	/**
+	 * Sets the {@link Level}s that would be logged, only passed levels would be
+	 * logged.
+	 * 
+	 * @param levels
+	 *            to be logged
+	 */
 	public void setLevels(Level... levels) {
 		int vals = 0;
 		if (levels != null) {
@@ -46,16 +61,29 @@ public class Settings {
 		}
 	}
 
-	public void enableLogging(boolean b) {
-		enabled = b;
+	/**
+	 * Set the enabled state logging.
+	 * 
+	 * @param enabled
+	 *            True if logging is enabled, false otherwise.
+	 */
+	public void enableLogging(boolean enabled) {
+		this.enabled = enabled;
 	}
 
 	public boolean isLoggingEnabled() {
 		return enabled;
 	}
 
-	public void setFileLogging(boolean b) {
-		isFileLoggingEnabled = b;
+	/**
+	 * Set the enabled state of the instance of {@link FileLogger} associated
+	 * with current instance of {@link ILog}.
+	 * 
+	 * @param enabled
+	 *            True if file logging is enabled, false otherwise.
+	 */
+	public void setFileLogging(boolean enabled) {
+		isFileLoggingEnabled = enabled;
 	}
 
 	public boolean isFileLogging() {
@@ -80,6 +108,14 @@ public class Settings {
 		return isWrapText;
 	}
 
+	/**
+	 * enabled text wrapping in Android LogCat, if the length of the message
+	 * will be more than 4000 characters, it will be split into lines
+	 * 
+	 * @param isWrapText
+	 *            if true text wrapping will be enabled, false otherwise
+	 *            (default value is enabled)
+	 */
 	public void setWrapText(boolean isWrapText) {
 		this.isWrapText = isWrapText;
 	}

@@ -34,8 +34,6 @@ public class HtmlFileLogger extends FileLogger {
 	public void onStart() {
 		if (printStream != null) {
 
-			isStarted = true;
-
 			printStream.format(htmlStart1, "Logging Started on:"
 					+ TIME_FORMATTER.format(new Date()));
 			printStream.append(htmlStart2);
@@ -46,11 +44,6 @@ public class HtmlFileLogger extends FileLogger {
 	@Override
 	public boolean log(Level level, String tag, Object msg, Throwable err) {
 		if (printStream != null) {
-
-			if (!isStarted) {
-				onStart();
-			}
-
 			String row = String
 					.format(tableRow, level.name().charAt(0), TIME_FORMATTER
 							.format(new Date()), tag,

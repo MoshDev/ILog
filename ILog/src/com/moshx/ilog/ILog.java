@@ -494,7 +494,7 @@ public class ILog {
 	 *            True if file logging is enabled, false otherwise.
 	 */
 	public ILog setFileLogging(boolean enabled) {
-		mSettings.isFileLoggingEnabled = enabled;
+		mSettings.setFileLogging(enabled);
 		return this;
 	}
 

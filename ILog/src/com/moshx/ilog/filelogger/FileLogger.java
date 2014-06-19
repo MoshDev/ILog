@@ -13,7 +13,6 @@ import com.moshx.ilog.Settings.Level;
 public abstract class FileLogger {
 
 	protected PrintStream printStream;
-	protected boolean isStarted;
 
 	private static final SimpleDateFormat FILE_DATE_FORMATTER = new SimpleDateFormat(
 			"yyyy_MM_dd__HH_mm_ss_SSS", Locale.US);
@@ -21,10 +20,9 @@ public abstract class FileLogger {
 	protected static final SimpleDateFormat TIME_FORMATTER = new SimpleDateFormat(
 			"yyyy-MM-dd HH:mm:ss", Locale.US);
 
-	public FileLogger setLogStream(PrintStream printStream) {
-		reset();
+	public void setLogStream(PrintStream printStream) {
+		onStart();
 		this.printStream = printStream;
-		return this;
 	}
 
 	public FileLogger setLogFile(String path) {
@@ -32,57 +30,63 @@ public abstract class FileLogger {
 		return this;
 	}
 
-	public FileLogger createLogFile(String path) {
+	public File createLogFile(String path) {
+
 		try {
 			File f = new File(path);
 			f.getParentFile().mkdirs();
 			f.createNewFile();
 			setLogFile(f);
+			return f;
 		} catch (Exception e) {
 			e.printStackTrace();
 			setLogStream(null);
 		}
-		return this;
+		return null;
 	}
 
-	public FileLogger createLogFile(String parent, String fileName) {
+	public File createLogFile(String parent, String fileName) {
 		try {
 			File f = new File(parent, fileName);
 			f.getParentFile().mkdirs();
 			f.createNewFile();
 			setLogFile(f);
+			return f;
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			setLogStream(null);
 		}
-		return this;
+		return null;
 	}
 
-	public FileLogger createLogFile(File parentFile, String fileName) {
+	public File createLogFile(File parentFile, String fileName) {
 		return createLogFile(parentFile.getAbsolutePath(), fileName);
 	}
 
-	public FileLogger createLogFile(File parentFile) {
+	public File createLogFile(File parentFile) {
 		try {
 			File f = new File(parentFile, generateLogFileName()
 					+ getFileExtension());
 			f.getParentFile().mkdirs();
 			f.createNewFile();
 			setLogFile(f);
+			return f;
 		} catch (Exception e) {
 			e.printStackTrace();
 			setLogStream(null);
 		}
 
-		return this;
+		return null;
 	}
 
-	public FileLogger setLogFile(File file) {
+	public File setLogFile(File file) {
 		if (file != null && file.exists() && file.canWrite()) {
 			try {
 				PrintStream stream = new PrintStream(
 						new FileOutputStream(file), true);
 				setLogStream(stream);
+				return file;
 
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
@@ -93,11 +97,10 @@ public abstract class FileLogger {
 			setLogStream(null);
 		}
 
-		return this;
+		return null;
 	}
 
 	public void onStart() {
-		isStarted = true;
 		if (printStream == null) {
 			return;
 		}
@@ -118,10 +121,6 @@ public abstract class FileLogger {
 
 	public static String generateLogFileName() {
 		return "ILog_" + FILE_DATE_FORMATTER.format(new Date());
-	}
-
-	private void reset() {
-		isStarted = false;
 	}
 
 	protected String getFileExtension() {

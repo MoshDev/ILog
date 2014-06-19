@@ -15,10 +15,6 @@ public class TextFileLogger extends FileLogger {
 			return false;
 		}
 
-		if (!isStarted) {
-			onStart();
-		}
-
 		String result = String.format(Locale.US, logFormat,
 				TIME_FORMATTER.format(new Date()), level.toString(), tag,
 				msg != null ? msg.toString() : "");

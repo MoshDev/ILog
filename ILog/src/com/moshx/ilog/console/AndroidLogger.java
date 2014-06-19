@@ -28,7 +28,6 @@ class AndroidLogger extends ILogLogger {
 		} else {
 			Log.d(tag, msgStr, err);
 		}
-
 	}
 
 	@Override
