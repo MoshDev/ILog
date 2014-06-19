@@ -1,6 +1,6 @@
 package com.moshx.ilog.console;
 
-public abstract class ILogLogger {
+public abstract class ILogConsole {
 
 	public abstract void d(String tag, Object msg, Throwable err);
 

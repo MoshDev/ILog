@@ -3,9 +3,9 @@ package com.moshx.ilog.filelogger;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.net.UnknownHostException;
-import java.util.Date;
 
 import com.moshx.ilog.Settings.Level;
+import com.moshx.ilog.utils.Utility;
 
 public class HtmlFileLogger extends FileLogger {
 
@@ -34,8 +34,8 @@ public class HtmlFileLogger extends FileLogger {
 	public void onStart() {
 		if (printStream != null) {
 
-			printStream.format(htmlStart1, "Logging Started on:"
-					+ TIME_FORMATTER.format(new Date()));
+			printStream.format(htmlStart1,
+					"Logging Started on:" + Utility.getFormattedDate());
 			printStream.append(htmlStart2);
 
 		}
@@ -45,8 +45,8 @@ public class HtmlFileLogger extends FileLogger {
 	public boolean log(Level level, String tag, Object msg, Throwable err) {
 		if (printStream != null) {
 			String row = String
-					.format(tableRow, level.name().charAt(0), TIME_FORMATTER
-							.format(new Date()), tag,
+					.format(tableRow, level.name().charAt(0),
+							Utility.getFormattedDate(), tag,
 							msg != null ? msg.toString() : "",
 							getStackTraceString(err));
 			switch (level) {

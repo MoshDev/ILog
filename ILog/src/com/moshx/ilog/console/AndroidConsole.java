@@ -4,11 +4,11 @@ import android.util.Log;
 
 import com.moshx.ilog.Settings;
 
-class AndroidLogger extends ILogLogger {
+class AndroidConsole extends ILogConsole {
 
 	private Settings mSettings;
 
-	public AndroidLogger(Settings sts) {
+	public AndroidConsole(Settings sts) {
 		mSettings = sts;
 	}
 

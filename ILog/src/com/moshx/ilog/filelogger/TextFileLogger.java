@@ -1,9 +1,9 @@
 package com.moshx.ilog.filelogger;
 
-import java.util.Date;
 import java.util.Locale;
 
 import com.moshx.ilog.Settings.Level;
+import com.moshx.ilog.utils.Utility;
 
 public class TextFileLogger extends FileLogger {
 
@@ -15,8 +15,8 @@ public class TextFileLogger extends FileLogger {
 			return false;
 		}
 
-		String result = String.format(Locale.US, logFormat,
-				TIME_FORMATTER.format(new Date()), level.toString(), tag,
+		String result = String.format(Locale.US, logFormat, Utility
+				.getFormattedDate(), level.toString(), tag,
 				msg != null ? msg.toString() : "");
 		printStream.append(result);
 		if (err != null) {

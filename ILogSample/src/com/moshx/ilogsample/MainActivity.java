@@ -9,7 +9,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.moshx.ilog.ILog;
+
 public class MainActivity extends ActionBarActivity {
+
+	private ILog log = new ILog();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -21,8 +25,7 @@ public class MainActivity extends ActionBarActivity {
 					.add(R.id.container, new PlaceholderFragment()).commit();
 		}
 
-//		Log.
-//		ILog.getInstance().
+		log.d();// check logcat
 	}
 
 	@Override

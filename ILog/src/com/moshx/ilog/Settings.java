@@ -94,7 +94,7 @@ public class Settings {
 	 * formations
 	 */
 
-	private String outFormat = "-%s   %s   %s";
+	private String outFormat = "%s   -%s   %s   %s";
 
 	public void setOutFormat(String format) {
 		outFormat = format;

@@ -3,15 +3,15 @@ package com.moshx.ilog;
 import java.util.Locale;
 
 import com.moshx.ilog.Settings.Level;
-import com.moshx.ilog.console.ILogLogger;
-import com.moshx.ilog.console.LoggerFactory;
+import com.moshx.ilog.console.ILogConsole;
+import com.moshx.ilog.console.ConsoleFactory;
 import com.moshx.ilog.filelogger.FileLogger;
 import com.moshx.ilog.filelogger.TextFileLogger;
 
 public class ILog {
 
 	private final Settings mSettings = new Settings();
-	private ILogLogger mLogger = LoggerFactory.getNewLogger(mSettings);
+	private ILogConsole mLogger = ConsoleFactory.getNewLogger(mSettings);
 	private FileLogger mFileLogger = new TextFileLogger();
 
 	public static final ILog o = new ILog("ILog");
@@ -24,14 +24,6 @@ public class ILog {
 	 */
 	public ILog() {
 		this(getCurrentClassName());
-	}
-
-	private static String getCurrentClassName() {
-		String className = new Exception().getStackTrace()[2].getClassName();
-		if (className.contains(".")) {
-			className = className.substring(className.lastIndexOf(".") + 1);
-		}
-		return className;
 	}
 
 	/**
@@ -52,6 +44,14 @@ public class ILog {
 	 */
 	public ILog enableLogging(boolean enabled) {
 		mSettings.enableLogging(enabled);
+		return this;
+	}
+
+	/**
+	 * Sets the tag value to the name of the Class of this method called from.
+	 */
+	public ILog setTag() {
+		mTag = getCurrentClassName();
 		return this;
 	}
 
@@ -498,4 +498,11 @@ public class ILog {
 		return this;
 	}
 
+	private static String getCurrentClassName() {
+		String className = new Exception().getStackTrace()[2].getClassName();
+		if (className.contains(".")) {
+			className = className.substring(className.lastIndexOf(".") + 1);
+		}
+		return className;
+	}
 }

@@ -4,7 +4,7 @@ import java.util.Locale;
 
 import com.moshx.ilog.Settings;
 
-public class LoggerFactory {
+public class ConsoleFactory {
 
 	static boolean isAndroidVM = false;
 	static {
@@ -12,11 +12,11 @@ public class LoggerFactory {
 		isAndroidVM = (vendor.toLowerCase(Locale.US).contains("android"));
 	}
 
-	public static ILogLogger getNewLogger(Settings sts) {
+	public static ILogConsole getNewLogger(Settings sts) {
 		if (isAndroidVM) {
-			return new AndroidLogger(sts);
+			return new AndroidConsole(sts);
 		} else {
-			return new JVMLogger(sts);
+			return new JVMConsole(sts);
 		}
 	}
 

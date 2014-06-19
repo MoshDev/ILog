@@ -4,25 +4,17 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
 
 import com.moshx.ilog.Settings.Level;
+import com.moshx.ilog.utils.Utility;
 
 public abstract class FileLogger {
 
 	protected PrintStream printStream;
 
-	private static final SimpleDateFormat FILE_DATE_FORMATTER = new SimpleDateFormat(
-			"yyyy_MM_dd__HH_mm_ss_SSS", Locale.US);
-
-	protected static final SimpleDateFormat TIME_FORMATTER = new SimpleDateFormat(
-			"yyyy-MM-dd HH:mm:ss", Locale.US);
-
 	public void setLogStream(PrintStream printStream) {
-		onStart();
 		this.printStream = printStream;
+		onStart();
 	}
 
 	public FileLogger setLogFile(String path) {
@@ -105,7 +97,7 @@ public abstract class FileLogger {
 			return;
 		}
 		printStream.append("Logging Started on "
-				+ TIME_FORMATTER.format(new Date()).concat("\n\n"));
+				+ Utility.getFormattedDate().concat("\n\n"));
 	}
 
 	public abstract boolean log(Level level, String tag, Object msg,
@@ -116,11 +108,11 @@ public abstract class FileLogger {
 			return;
 		}
 		printStream.append("\nLogging Ended on "
-				+ TIME_FORMATTER.format(new Date()).concat("\n"));
+				+ Utility.getFormattedDate().concat("\n"));
 	}
 
 	public static String generateLogFileName() {
-		return "ILog_" + FILE_DATE_FORMATTER.format(new Date());
+		return "ILog_" + Utility.getFormattedFileDate();
 	}
 
 	protected String getFileExtension() {
