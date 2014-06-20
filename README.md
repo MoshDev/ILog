@@ -12,4 +12,4 @@ Samples and documentation
 
     new ILog().d(); // as simple as that
 
-Refer to http://www.moshx.com  for more details
+Refer to http://moshx.com/?p=57  for more details
